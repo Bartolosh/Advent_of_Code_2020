@@ -1,6 +1,5 @@
 def process(instructions):
-    acc = 0
-    idx = 0
+    acc,idx = 0,0
     idx_list = []
     for _ in range(len(instructions)):
         if idx == len(instructions):
@@ -24,7 +23,6 @@ print(process(instructions)[0])
 
 # part 2
 
-import re
 idx_list =[]
 stop = False
 while not stop:
