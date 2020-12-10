@@ -2,13 +2,7 @@ import numpy as np
 
 def check(n,l):
     tot = l[:,None] + l[None,:]
-    return True if n in tot else False
-
-def find(target,n,l):
-    for i in range(len(l)):
-        if target == sum(np.array(l[i:n+i])):
-            return max(l[i:i+n])+min(l[i:i+n])
-    return False
+    return n in tot
 
 # part 1
 
@@ -21,9 +15,12 @@ for i in range(25,len(f)):
         print(n)
 
 # part 2
-
-for i in range(2,len(f)):
-    weakness = find(n,i,f)
-    if weakness:
-        print(weakness)
+start = 0
+end = 1
+for i in range(len(f)):
+    s = sum(f[start:end])
+    start += s > n
+    end += s < n
+    if s == n:
+        print(max(f[start:end]) + min(f[start:end]))
         break
